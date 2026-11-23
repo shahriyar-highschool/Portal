@@ -1,0 +1,19 @@
+name = "shahriar-school-portal"
+main = "worker/index.ts"
+compatibility_date = "2025-03-01"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+
+# فضای نام اختصاصی مدرسه استاد شهریار در Cloudflare KV
+# پیش از استقرار، شناسه Namespace اختصاصی مدرسه را جایگزین کنید:
+# wrangler kv namespace create SCHOOL_KV
+[[kv_namespaces]]
+binding = "SCHOOL_KV"
+id = "REPLACE_WITH_YOUR_SCHOOL_KV_NAMESPACE_ID"
+preview_id = "REPLACE_WITH_YOUR_SCHOOL_KV_PREVIEW_ID"
+
+# کلید سرویس هوش مصنوعی باید به صورت Secret در Cloudflare ثبت شود:
+# wrangler secret put GEMINI_API_KEY
