@@ -1,0 +1,8 @@
+{
+  "name": "سامانه هوشمند مدرسه استاد شهریار",
+  "description": "پلتفرم جامع مدیریت مدرسه استاد شهریار با پنل‌های دانش‌آموز، معلم و مدیریت، دستیار هوش مصنوعی اختصاصی و معماری Cloudflare KV",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
