@@ -6,7 +6,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/Portal/', // این خط حیاتی برای گیت‌هاب پیج‌ز است
+    base: '/', // اگر در ریشه است، حتماً باید این باشد
     plugins: [
       react(),
       tailwindcss(),
