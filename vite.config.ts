@@ -6,7 +6,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/', // اگر در ریشه است، حتماً باید این باشد
+    base: '/Portal/',
     plugins: [
       react(),
       tailwindcss(),
