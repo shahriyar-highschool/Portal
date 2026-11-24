@@ -40,7 +40,7 @@ interface AppShellProps {
   children: ReactNode;
 }
 
-const EMBLEM_SRC = `${import.meta.env.BASE_URL}assets/aistudio/image_1b3c1aaa.png`;
+const EMBLEM_SRC = '/assets/aistudio/image_1b3c1aaa.png';
 
 export function AppShell({
   user,

@@ -267,7 +267,6 @@ function extractSessionToken(req: Request): string | null {
 
 const STATIC_ALLOWED_ORIGINS = [
   'https://shahriar_school.stormkit.dev',
-  'https://shahriyar-highschool.github.io/Portal',
   'https://yashar-1392.github.io',
   'https://shahriar-school-api.yashar-online-store.workers.dev',
   'http://localhost:3000',
@@ -294,6 +293,15 @@ function resolveAllowedOrigin(req: Request, customAppOrigin?: string): string | 
     const reqOrigin = new URL(req.url).origin;
     if (reqOrigin === normalizedOrigin) return normalizedOrigin;
     const parsedOrigin = new URL(normalizedOrigin);
+    if (
+      parsedOrigin.protocol === 'https:' &&
+      (parsedOrigin.hostname.endsWith('.stormkit.dev') ||
+        parsedOrigin.hostname.endsWith('.workers.dev') ||
+        parsedOrigin.hostname.endsWith('.pages.dev') ||
+        parsedOrigin.hostname.endsWith('.run.app'))
+    ) {
+      return normalizedOrigin;
+    }
   } catch {
     return null;
   }

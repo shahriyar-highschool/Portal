@@ -36,7 +36,7 @@ interface ConversationSummary {
   messageCount: number;
 }
 
-const EMBLEM_IMG = `${import.meta.env.BASE_URL}assets/aistudio/image_1b3c1aaa.png`;
+const EMBLEM_IMG = '/assets/aistudio/image_1b3c1aaa.png';
 
 const ROTATING_TAGLINES_FA = [
   'یادگیری عمیق‌تر با معلم خصوصی هوشمند دبیرستان استاد شهریار',
