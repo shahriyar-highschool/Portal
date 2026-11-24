@@ -29,8 +29,8 @@ interface LoginViewProps {
   onAuthenticated: (user: UserAccount, settings?: SchoolSettings) => void;
 }
 
-const HERO_IMG = '/assets/aistudio/image_29532093_cropped.jpg';
-const EMBLEM_IMG = '/assets/aistudio/image_1b3c1aaa.png';
+const HERO_IMG = `${import.meta.env.BASE_URL}assets/aistudio/image_29532093_cropped.jpg`;
+const EMBLEM_IMG = `${import.meta.env.BASE_URL}assets/aistudio/image_1b3c1aaa.png`;
 
 export function LoginView({ initialized, schoolName, onRefreshStatus, onAuthenticated }: LoginViewProps) {
   const { lang, isRtl, toggleLang, tr, schoolTitle } = useI18n();

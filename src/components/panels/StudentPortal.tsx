@@ -1045,7 +1045,7 @@ export function StudentPortal({
             <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-3">
                 <img
-                  src="/assets/aistudio/image_1b3c1aaa.png"
+                  src={`${import.meta.env.BASE_URL}assets/aistudio/image_1b3c1aaa.png`}
                   alt={schoolTitle(settings?.schoolName)}
                   referrerPolicy="no-referrer"
                   className="w-11 h-11 rounded-lg object-contain bg-white p-1 border border-slate-200 dark:border-slate-700 shrink-0"
