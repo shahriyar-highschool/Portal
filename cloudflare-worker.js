@@ -1097,11 +1097,31 @@ async function handle(request, env) {
       await Promise.all([
         env.SCHOOL_KV.delete(`user:${target.id}`),
         env.SCHOOL_KV.delete(`username:${target.username}`),
-        env.SCHOOL_KV.delete(`account-index:${target.role}:${target.id}`)
+        env.SCHOOL_KV.delete(`account-index:admin:${target.id}`),
+        env.SCHOOL_KV.delete(`account-index:teacher:${target.id}`),
+        env.SCHOOL_KV.delete(`account-index:student:${target.id}`)
       ]);
       await logActivity(env, user, "user_deleted", { target: target.username });
       return json({ success: true, message: "کاربر حذف شد" }, 200, origin);
     }
+  }
+
+  const legacyDeleteMatch = path.match(/^\/api\/admin\/(students|teachers)\/([^/]+)$/);
+  if (legacyDeleteMatch && method === "DELETE") {
+    if (!requireRole(user, ["admin"])) return fail("فقط مدیر می‌تواند کاربر را حذف کند", 403, origin);
+    const targetId = decodeURIComponent(legacyDeleteMatch[2]);
+    if (targetId === user.id) return fail("امکان حذف حساب فعلی مدیر وجود ندارد", 400, origin);
+    const target = await getUser(env, targetId);
+    if (!target) return fail("کاربر یافت نشد", 404, origin);
+    await Promise.all([
+      env.SCHOOL_KV.delete(`user:${target.id}`),
+      env.SCHOOL_KV.delete(`username:${target.username}`),
+      env.SCHOOL_KV.delete(`account-index:admin:${target.id}`),
+      env.SCHOOL_KV.delete(`account-index:teacher:${target.id}`),
+      env.SCHOOL_KV.delete(`account-index:student:${target.id}`)
+    ]);
+    await logActivity(env, user, "user_deleted", { target: target.username });
+    return json({ success: true, message: "کاربر حذف شد" }, 200, origin);
   }
 
   // LEGACY CREATE/LIST STUDENTS & TEACHERS
